@@ -20,6 +20,25 @@ addCardElement.addEventListener('click', handleClickButtonAddCard)
 btnCloseElement.addEventListener('click', handleClickBtnCloseModal)
 
 
+function handleClickBtnCloseModal(event) {
+	const currentModalFormElement = target.closest('[data-item="modal"]')
+	if (event.target.dataset.role == 'remove') {
+		toggleModal(currentModalFormElement)
+		if (currentModalFormElement.contains(modalFormElement)) {
+			modalFormElement.reset()
+		}
+	}
+}
+
+// function handleClickBtnCloseModal({ target }) {
+// 	const currentModalElement = target.closest('[data-item="modal"]')
+// 	if (target === currentModalElement || target.dataset.role == 'close-modal' || target.dataset.role == 'accept') {
+// 		toggleModal(currentModalElement)
+// 		if (currentModalElement.contains(formElement)) {
+// 			formElement.reset()
+// 		}
+// 	}
+// }
 
 
 function handleClickButtonAddCard() {

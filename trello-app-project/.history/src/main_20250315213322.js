@@ -20,6 +20,11 @@ addCardElement.addEventListener('click', handleClickButtonAddCard)
 btnCloseElement.addEventListener('click', handleClickBtnCloseModal)
 
 
+function handleClickBtnCloseModal() {
+	if (modalFormElement) {
+		modalFormElement.classList.add('.hidden-modal')
+	}
+}
 
 
 function handleClickButtonAddCard() {
@@ -57,10 +62,11 @@ function buildModalForm() {
 						<button type="submit" class="btn btn-primary bg-secondary bg-gradient border-secondary">Add card
 							TODO</button>
 						<button type="button" class="btn-close position-absolute top-0 end-0 me-4 mt-4"
-							aria-label="close" data-dismiss="modal" data-set="remove"></button>
+							aria-label="close"></button>
 					</form>
 				</div>
 	`
+
 }
 
 

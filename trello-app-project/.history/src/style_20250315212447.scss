@@ -1,0 +1,8 @@
+@import "bootstrap/scss/bootstrap";
+
+#modalFormContainer {
+	display: flex; /* Видимое окно */
+}
+.hidden {
+	display: none; /* Скрытое окно */
+}

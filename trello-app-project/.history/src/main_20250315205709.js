@@ -5,7 +5,6 @@ import './style.scss'
 const clockElement = document.querySelector('#clock')
 const addCardElement = document.querySelector('#addCardBtn')
 const modalFormElement = document.querySelector('#modalFormContainer')
-const btnCloseElement = document.querySelector('.btn-close')
 
 //функция, которая отражает часы
 function showClock() {
@@ -15,12 +14,8 @@ setInterval(showClock, 1000)
 showClock()
 
 
-//открытие модального окна
+//открытие модального окна после клика
 addCardElement.addEventListener('click', handleClickButtonAddCard)
-btnCloseElement.addEventListener('click', handleClickBtnCloseModal)
-
-
-
 
 function handleClickButtonAddCard() {
 	toggleModal(modalFormElement)
@@ -32,20 +27,20 @@ function toggleModal(modal) {
 }
 function buildModalForm() {
 	return `
-				<div class="d-flex align-items-center justify-content-center position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50">
+				<div class="position-fixed top-25 start-25 w-100 bg-dark bg-opacity-50">
 					<form class="p-4 border rounded bg-light text-start fw-semibold w-50 position-relative">
 						<div class="mb-3">
-							<label for="title" class="form-label fs-5">Title</label>
-							<input type="text" class="form-control" id="title" placeholder="Enter todo..." required>
+							<label for="titile" class="form-label fs-5">Title</label>
+							<input type="text" class="form-control" id="title" placeholder="Enter todo...">
 						</div>
 						<div class="mb-3">
 							<label for="description" class="form-label fs-5">Description</label>
 							<textarea class="form-control p-2 rounded-3" id="description" rows="6"
-								placeholder="Write description" required></textarea>
+								placeholder="Write description"></textarea>
 						</div>
 						<div class="mb-3">
 							<label for="user" class="form-label fs-5">User </label>
-							<select id="user" class="form-select" required>
+							<select id="user" class="form-select">
 								<option selected value="">Choose user</option>
 								<option value="Amelia">Amelia</option>
 								<option value="Mary">Mary</option>
@@ -57,10 +52,10 @@ function buildModalForm() {
 						<button type="submit" class="btn btn-primary bg-secondary bg-gradient border-secondary">Add card
 							TODO</button>
 						<button type="button" class="btn-close position-absolute top-0 end-0 me-4 mt-4"
-							aria-label="close" data-dismiss="modal" data-set="remove"></button>
+							aria-label="close"></button>
 					</form>
 				</div>
 	`
-}
 
+}
 

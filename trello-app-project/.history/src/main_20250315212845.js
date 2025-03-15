@@ -15,23 +15,32 @@ setInterval(showClock, 1000)
 showClock()
 
 
-//открытие модального окна
+//открытие модального окна после клика
 addCardElement.addEventListener('click', handleClickButtonAddCard)
 btnCloseElement.addEventListener('click', handleClickBtnCloseModal)
 
 
+function handleClickBtnCloseModal() {
+	if (modalFormElement) {
+		modalFormElement.classList.add('hidden'); // Добавляем класс для скрытия окна
+	}
+	if (currentModalElement.contains(	if (modalFormElement) {
+	)) {
+			formElement.reset()
+		}
+	}
 
 
-function handleClickButtonAddCard() {
-	toggleModal(modalFormElement)
-	modalFormElement.innerHTML = buildModalForm()
-}
+	function handleClickButtonAddCard() {
+		toggleModal(modalFormElement)
+		modalFormElement.innerHTML = buildModalForm()
+	}
 
-function toggleModal(modal) {
-	modal.classList.toggle('show'); // Переключает класс "show", отвечающий за видимость
-}
-function buildModalForm() {
-	return `
+	function toggleModal(modal) {
+		modal.classList.toggle('show'); // Переключает класс "show", отвечающий за видимость
+	}
+	function buildModalForm() {
+		return `
 				<div class="d-flex align-items-center justify-content-center position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50">
 					<form class="p-4 border rounded bg-light text-start fw-semibold w-50 position-relative">
 						<div class="mb-3">
@@ -57,10 +66,11 @@ function buildModalForm() {
 						<button type="submit" class="btn btn-primary bg-secondary bg-gradient border-secondary">Add card
 							TODO</button>
 						<button type="button" class="btn-close position-absolute top-0 end-0 me-4 mt-4"
-							aria-label="close" data-dismiss="modal" data-set="remove"></button>
+							aria-label="close"></button>
 					</form>
 				</div>
 	`
-}
+
+	}
 
 

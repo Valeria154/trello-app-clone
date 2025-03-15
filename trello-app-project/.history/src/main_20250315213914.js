@@ -5,7 +5,7 @@ import './style.scss'
 const clockElement = document.querySelector('#clock')
 const addCardElement = document.querySelector('#addCardBtn')
 const modalFormElement = document.querySelector('#modalFormContainer')
-const btnCloseElement = document.querySelector('.btn-close')
+const btnCloseElement = document.querySelector('.close')
 
 //функция, которая отражает часы
 function showClock() {
@@ -19,6 +19,15 @@ showClock()
 addCardElement.addEventListener('click', handleClickButtonAddCard)
 btnCloseElement.addEventListener('click', handleClickBtnCloseModal)
 
+
+function handleClickBtnCloseModal(event) {
+	if (event.target.dataset.role == 'remove') {
+		const closeTodoItem = todos.filter(item => item.id === event.target.closest('.todo-item').id)
+		todos.splice([closeTodoItem], 1)
+		setData(todos)
+		render()
+	}
+}
 
 
 
@@ -56,11 +65,12 @@ function buildModalForm() {
 						</div>
 						<button type="submit" class="btn btn-primary bg-secondary bg-gradient border-secondary">Add card
 							TODO</button>
-						<button type="button" class="btn-close position-absolute top-0 end-0 me-4 mt-4"
-							aria-label="close" data-dismiss="modal" data-set="remove"></button>
+						<button type="button" class="btn-close position-absolute top-0 end-0 me-4 mt-4 close"
+							aria-label="close"></button>
 					</form>
 				</div>
 	`
+
 }
 
 

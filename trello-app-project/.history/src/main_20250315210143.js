@@ -5,7 +5,6 @@ import './style.scss'
 const clockElement = document.querySelector('#clock')
 const addCardElement = document.querySelector('#addCardBtn')
 const modalFormElement = document.querySelector('#modalFormContainer')
-const btnCloseElement = document.querySelector('.btn-close')
 
 //функция, которая отражает часы
 function showClock() {
@@ -15,12 +14,8 @@ setInterval(showClock, 1000)
 showClock()
 
 
-//открытие модального окна
+//открытие модального окна после клика
 addCardElement.addEventListener('click', handleClickButtonAddCard)
-btnCloseElement.addEventListener('click', handleClickBtnCloseModal)
-
-
-
 
 function handleClickButtonAddCard() {
 	toggleModal(modalFormElement)
@@ -32,7 +27,7 @@ function toggleModal(modal) {
 }
 function buildModalForm() {
 	return `
-				<div class="d-flex align-items-center justify-content-center position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50">
+				<div class="d-flex align-items-center justify-content-center position-fixed top-0 start-0 w-100 bg-dark bg-opacity-50">
 					<form class="p-4 border rounded bg-light text-start fw-semibold w-50 position-relative">
 						<div class="mb-3">
 							<label for="title" class="form-label fs-5">Title</label>
@@ -57,10 +52,10 @@ function buildModalForm() {
 						<button type="submit" class="btn btn-primary bg-secondary bg-gradient border-secondary">Add card
 							TODO</button>
 						<button type="button" class="btn-close position-absolute top-0 end-0 me-4 mt-4"
-							aria-label="close" data-dismiss="modal" data-set="remove"></button>
+							aria-label="close"></button>
 					</form>
 				</div>
 	`
-}
 
+}
 

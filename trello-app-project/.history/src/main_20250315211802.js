@@ -15,12 +15,19 @@ setInterval(showClock, 1000)
 showClock()
 
 
-//открытие модального окна
+//открытие модального окна после клика
 addCardElement.addEventListener('click', handleClickButtonAddCard)
 btnCloseElement.addEventListener('click', handleClickBtnCloseModal)
 
-
-
+function handleClickBtnCloseModal({ target }) {
+	const currentModalElement = target.closest('[data-item="modal"]')
+	if (target === currentModalElement || target.dataset.role == 'close-modal' || target.dataset.role == 'accept') {
+		toggleModal(currentModalElement)
+		if (currentModalElement.contains(formElement)) {
+			formElement.reset()
+		}
+	}
+}
 
 function handleClickButtonAddCard() {
 	toggleModal(modalFormElement)
@@ -57,10 +64,11 @@ function buildModalForm() {
 						<button type="submit" class="btn btn-primary bg-secondary bg-gradient border-secondary">Add card
 							TODO</button>
 						<button type="button" class="btn-close position-absolute top-0 end-0 me-4 mt-4"
-							aria-label="close" data-dismiss="modal" data-set="remove"></button>
+							aria-label="close"></button>
 					</form>
 				</div>
 	`
+
 }
 
 

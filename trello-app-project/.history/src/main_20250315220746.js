@@ -20,6 +20,29 @@ addCardElement.addEventListener('click', handleClickButtonAddCard)
 btnCloseElement.addEventListener('click', handleClickBtnCloseModal)
 
 
+function handleClickBtnCloseModal(event) {
+	const currentModalFormElement = event.target.closest('[data-item="modal"]');
+	if (!currentModalFormElement) return;
+
+	if (event.target.dataset.role === 'remove') {
+		toggleModal(currentModalFormElement);
+
+		const formElement = currentModalFormElement.querySelector('form');
+		if (formElement) {
+			formElement.reset();
+		}
+	}
+}
+
+// function handleClickBtnCloseModal({ target }) {
+// 	const currentModalElement = target.closest('[data-item="modal"]')
+// 	if (target === currentModalElement || target.dataset.role == 'close-modal' || target.dataset.role == 'accept') {
+// 		toggleModal(currentModalElement)
+// 		if (currentModalElement.contains(formElement)) {
+// 			formElement.reset()
+// 		}
+// 	}
+// }
 
 
 function handleClickButtonAddCard() {
@@ -33,7 +56,7 @@ function toggleModal(modal) {
 function buildModalForm() {
 	return `
 				<div class="d-flex align-items-center justify-content-center position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50">
-					<form class="p-4 border rounded bg-light text-start fw-semibold w-50 position-relative">
+					<form class="p-4 border rounded bg-light text-start fw-semibold w-50 position-relative data-item="modal"">
 						<div class="mb-3">
 							<label for="title" class="form-label fs-5">Title</label>
 							<input type="text" class="form-control" id="title" placeholder="Enter todo..." required>

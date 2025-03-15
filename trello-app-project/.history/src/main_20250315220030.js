@@ -20,6 +20,25 @@ addCardElement.addEventListener('click', handleClickButtonAddCard)
 btnCloseElement.addEventListener('click', handleClickBtnCloseModal)
 
 
+function handleClickBtnCloseModal(event) {
+	const currentModalFormElement = target.closest('[data-item="modal"]')
+	if (event.target.dataset.role == 'remove') {
+		toggleModal(currentModalFormElement)
+		if (currentModalFormElement.contains(modalFormElement)) {
+			modalFormElement.reset()
+		}
+	}
+}
+
+// function handleClickBtnCloseModal({ target }) {
+// 	const currentModalElement = target.closest('[data-item="modal"]')
+// 	if (target === currentModalElement || target.dataset.role == 'close-modal' || target.dataset.role == 'accept') {
+// 		toggleModal(currentModalElement)
+// 		if (currentModalElement.contains(formElement)) {
+// 			formElement.reset()
+// 		}
+// 	}
+// }
 
 
 function handleClickButtonAddCard() {
@@ -57,10 +76,11 @@ function buildModalForm() {
 						<button type="submit" class="btn btn-primary bg-secondary bg-gradient border-secondary">Add card
 							TODO</button>
 						<button type="button" class="btn-close position-absolute top-0 end-0 me-4 mt-4"
-							aria-label="close" data-dismiss="modal" data-set="remove"></button>
+							aria-label="close" data-set="remove"></button>
 					</form>
 				</div>
 	`
+
 }
 
 

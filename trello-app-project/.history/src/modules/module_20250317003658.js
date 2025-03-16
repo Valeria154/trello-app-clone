@@ -1,6 +1,4 @@
-import { statusArr } from './variables.js'
-
-export class Todo {
+class Todo {
 	constructor({ title, description, user, status = '0' }) {
 		this.id = Date.now()
 		this.createdAt = new Date().toString()
@@ -10,3 +8,5 @@ export class Todo {
 		this.status = statusArr[status]
 	}
 }
+
+//export { Todo }

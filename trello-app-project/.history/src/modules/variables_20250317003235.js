@@ -1,5 +1,3 @@
-import { getData } from './helpers.js'
-
 const todos = getData()
 const clockElement = document.querySelector('#clock')
 const addCardBtnElement = document.querySelector('#addCardBtn')

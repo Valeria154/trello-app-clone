@@ -1,12 +1,9 @@
 import { todos, formElement, modalFormElement } from './variables.js'
 import { Todo } from './module.js'
-import { toggleModal, buildModalForm, setData, render } from './helpers.js'
-
+import { toggleModal, setData, render, buildModalForm } from './helpers.js'
 
 function handleClickButtonAddCard() {
 	toggleModal(modalFormElement) // Открываем модальное окно
-	formElement.innerHTML = buildModalForm()
-	const btnCloseElement = modalFormElement.querySelector('.btn-close')
 	btnCloseElement.addEventListener('click', () => toggleModal(modalFormElement))
 }
 

@@ -1,4 +1,4 @@
-import { getData } from './helpers.js'
+import { getData } from './helpers'
 
 const todos = getData()
 const clockElement = document.querySelector('#clock')

@@ -1,7 +1,11 @@
-import { todos, formElement, modalFormElement } from './variables.js'
-import { Todo } from './module.js'
-import { toggleModal, buildModalForm, setData, render } from './helpers.js'
+import './style.scss'
 
+
+
+addCardBtnElement.addEventListener('click', handleClickButtonAddCard)
+containerTodoElement.addEventListener('submit', handleSubmitForm)
+containerTodoElement.addEventListener('click', handleClickEditTodo)
+containerTodoElement.addEventListener('click', handleClickDeleteTodo)
 
 function handleClickButtonAddCard() {
 	toggleModal(modalFormElement) // Открываем модальное окно
@@ -64,11 +68,4 @@ function handleClickDeleteTodo({ target }) {
 			render(todos)
 		}
 	}
-}
-
-export {
-	handleClickButtonAddCard,
-	handleSubmitForm,
-	handleClickEditTodo,
-	handleClickDeleteTodo
 }

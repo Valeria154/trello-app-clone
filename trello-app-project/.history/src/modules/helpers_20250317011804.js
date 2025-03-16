@@ -3,9 +3,9 @@ import { clockElement, todoContainerElement, inProgressContainerElement, doneCon
 //Часы
 function showClock() {
 	clockElement.textContent = new Date().toLocaleTimeString()
-	setInterval(showClock, 1000)
 }
-
+setInterval(showClock, 1000)
+showClock()
 
 function toggleModal(modal) {
 	if (modal.classList.contains('hidden')) {

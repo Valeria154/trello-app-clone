@@ -1,6 +1,6 @@
-import { todos, formElement, modalFormElement } from './variables.js'
-import { Todo } from './module.js'
-import { toggleModal, buildModalForm, setData, render } from './helpers.js'
+import { todos, formElement, modalFormElement } from './variables'
+import { Todo } from './module'
+import { toggleModal, buildModalForm, setData, render } from './helpers'
 
 
 function handleClickButtonAddCard() {

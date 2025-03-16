@@ -1,8 +1,3 @@
-import { todos, formElement, modalFormElement } from './variables.js'
-import { Todo } from './module.js'
-import { toggleModal, buildModalForm, setData, render } from './helpers.js'
-
-
 function handleClickButtonAddCard() {
 	toggleModal(modalFormElement) // Открываем модальное окно
 	formElement.innerHTML = buildModalForm()

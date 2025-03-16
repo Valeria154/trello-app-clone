@@ -1,7 +1,11 @@
-import { todos, formElement, modalFormElement } from './variables.js'
-import { Todo } from './module.js'
-import { toggleModal, buildModalForm, setData, render } from './helpers.js'
+import './style.scss'
 
+
+
+addCardBtnElement.addEventListener('click', handleClickButtonAddCard)
+containerTodoElement.addEventListener('submit', handleSubmitForm)
+containerTodoElement.addEventListener('click', handleClickEditTodo)
+containerTodoElement.addEventListener('click', handleClickDeleteTodo)
 
 function handleClickButtonAddCard() {
 	toggleModal(modalFormElement) // Открываем модальное окно
@@ -31,6 +35,21 @@ function handleSubmitForm(event) {
 	formElement.reset()
 	toggleModal(modalFormElement)
 	delete formElement.dataset.editedId
+}
+
+
+
+
+
+class Todo {
+	constructor({ title, description, user, status = '0' }) {
+		this.id = Date.now()
+		this.createdAt = new Date().toString()
+		this.title = title
+		this.description = description
+		this.user = user
+		this.status = statusArr[status]
+	}
 }
 
 function handleClickEditTodo({ target }) {
@@ -64,11 +83,4 @@ function handleClickDeleteTodo({ target }) {
 			render(todos)
 		}
 	}
-}
-
-export {
-	handleClickButtonAddCard,
-	handleSubmitForm,
-	handleClickEditTodo,
-	handleClickDeleteTodo
 }

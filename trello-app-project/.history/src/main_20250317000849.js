@@ -165,19 +165,20 @@ class Todo {
 
 function handleClickEditTodo({ target }) {
 	if (target.dataset.role !== 'edit') return
+
 	const { id } = target.closest('[data-id]').dataset
 	const currentTodo = todos.find(todo => todo.id == id)
 
-	toggleModal(modalFormElement)
+	toggleModal(formModalElement)
 
-	formElement.innerHTML = buildModalForm()
-	const titleInput = formElement.querySelector('[name="title"]')
-	const descriptionInput = formElement.querySelector('[name="description"]')
-	const userSelect = formElement.querySelector('[name="user"]')
+	formElement.innerHTML = buildFormModal()
+	const titleInput = formElement.querySelector('[name="title"]');
+	const descriptionInput = formElement.querySelector('[name="description"]');
+	const userSelect = formElement.querySelector('[name="assignUser"]');
 
-	titleInput.value = currentTodo.title
-	descriptionInput.value = currentTodo.description
-	userSelect.value = currentTodo.user
+	titleInput.value = currentTodo.title;
+	descriptionInput.value = currentTodo.description;
+	userSelect.value = currentTodo.assignUser;
 
 	formElement.dataset.editedId = currentTodo.id
 }

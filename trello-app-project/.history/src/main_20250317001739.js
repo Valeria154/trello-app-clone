@@ -164,6 +164,41 @@ class Todo {
 }
 
 function handleClickEditTodo({ target }) {
+	const cardElement = target.closest('.card');
+	if (!cardElement) {
+		console.error('Карточка не найдена');
+		return;
+	}
+
+	const { id } = cardElement.dataset;
+	if (!id) {
+		console.error('ID задачи отсутствует');
+		return;
+	}
+
+	const todo = todos.find(todo => todo.id == id);
+	if (!todo) {
+		console.error('Задача с таким ID не найдена');
+		return;
+	}
+
+	// Открываем модальное окно с формой
+	modalFormElement.innerHTML = buildModalForm();
+	toggleModal(modalFormElement);
+
+	// Заполняем форму данными задачи
+	const formElement = modalFormElement.querySelector('#form');
+	if (formElement) {
+		formElement.querySelector('#title').value = todo.title || '';
+		formElement.querySelector('#description').value = todo.description || '';
+		formElement.querySelector('#user').value = todo.user || '';
+		formElement.dataset.editedId = todo.id;
+	} else {
+		console.error('Форма редактирования не найдена');
+	}
+}
+
+function handleClickEditTodo({ target }) {
 	if (target.dataset.role !== 'edit') return
 	const { id } = target.closest('[data-id]').dataset
 	const currentTodo = todos.find(todo => todo.id == id)
@@ -173,7 +208,7 @@ function handleClickEditTodo({ target }) {
 	formElement.innerHTML = buildModalForm()
 	const titleInput = formElement.querySelector('[name="title"]')
 	const descriptionInput = formElement.querySelector('[name="description"]')
-	const userSelect = formElement.querySelector('[name="user"]')
+	const userSelect = formElement.querySelector('[name="assignUser"]')
 
 	titleInput.value = currentTodo.title
 	descriptionInput.value = currentTodo.description

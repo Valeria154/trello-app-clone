@@ -164,23 +164,58 @@ class Todo {
 }
 
 function handleClickEditTodo({ target }) {
-	if (target.dataset.role !== 'edit') return
-	const { id } = target.closest('[data-id]').dataset
-	const currentTodo = todos.find(todo => todo.id == id)
+	const cardElement = target.closest('.card');
+	if (!cardElement) {
+		console.error('Карточка не найдена');
+		return;
+	}
 
-	toggleModal(modalFormElement)
+	const { id } = cardElement.dataset;
+	if (!id) {
+		console.error('ID задачи отсутствует');
+		return;
+	}
 
-	formElement.innerHTML = buildModalForm()
-	const titleInput = formElement.querySelector('[name="title"]')
-	const descriptionInput = formElement.querySelector('[name="description"]')
-	const userSelect = formElement.querySelector('[name="user"]')
+	const todo = todos.find(todo => todo.id == id);
+	if (!todo) {
+		console.error('Задача с таким ID не найдена');
+		return;
+	}
 
-	titleInput.value = currentTodo.title
-	descriptionInput.value = currentTodo.description
-	userSelect.value = currentTodo.user
+	// Открываем модальное окно с формой
+	modalFormElement.innerHTML = buildModalForm();
+	toggleModal(modalFormElement);
 
-	formElement.dataset.editedId = currentTodo.id
+	// Заполняем форму данными задачи
+	const formElement = modalFormElement.querySelector('#form');
+	if (formElement) {
+		formElement.querySelector('#title').value = todo.title || '';
+		formElement.querySelector('#description').value = todo.description || '';
+		formElement.querySelector('#user').value = todo.user || '';
+		formElement.dataset.editedId = todo.id;
+	} else {
+		console.error('Форма редактирования не найдена');
+	}
 }
+
+// function handleClickEditTodo({ target }) {
+// 	if (target.dataset.role !== 'edit') return
+// 	const { id } = target.closest('[data-id]').dataset
+// 	const currentTodo = todos.find(todo => todo.id == id)
+
+// 	toggleModal(modalFormElement)
+
+// 	formElement.innerHTML = buildModalForm()
+// 	const titleInput = formElement.querySelector('[name="title"]')
+// 	const descriptionInput = formElement.querySelector('[name="description"]')
+// 	const userSelect = formElement.querySelector('[name="assignUser"]')
+
+// 	titleInput.value = currentTodo.title
+// 	descriptionInput.value = currentTodo.description
+// 	userSelect.value = currentTodo.user
+
+// 	formElement.dataset.editedId = currentTodo.id
+// }
 
 function handleClickDeleteTodo({ target }) {
 	const { role } = target.dataset

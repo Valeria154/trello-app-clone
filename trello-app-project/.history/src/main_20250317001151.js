@@ -170,14 +170,14 @@ function handleClickEditTodo({ target }) {
 
 	toggleModal(modalFormElement)
 
-	formElement.innerHTML = buildModalForm()
+	formElement.innerHTML = buildFormModal()
 	const titleInput = formElement.querySelector('[name="title"]')
 	const descriptionInput = formElement.querySelector('[name="description"]')
-	const userSelect = formElement.querySelector('[name="user"]')
+	const userSelect = formElement.querySelector('[name="assignUser"]')
 
 	titleInput.value = currentTodo.title
 	descriptionInput.value = currentTodo.description
-	userSelect.value = currentTodo.user
+	userSelect.value = currentTodo.assignUser
 
 	formElement.dataset.editedId = currentTodo.id
 }

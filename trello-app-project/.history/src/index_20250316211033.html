@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Trello</title>
+	<script type="module" src="./main.js"></script>
+</head>
+
+<body class="bg-dark-subtle">
+	<header class="bg-secondary p-3">
+		<div class="container d-flex justify-content-between align-items-center mx-autox w-75">
+			<h1 class="fs-2 fw-bold text-white">Trello</h1>
+			<div class="fs-5 fw-semibold text-white" id="clock"></div>
+		</div>
+	</header>
+	<main class="p-4">
+		<div class="container text-center w-75" id="containerTodo">
+			<div class="row align-items-start mb-6 gap-5">
+				<!-- TODO -->
+				<div class="col border border-primary-subtle border-2 rounded-2 text-dark p-4 bg-primary-subtle">
+					<div class="d-flex justify-content-between mb-3">
+						<h4>TODO:</h4>
+						<div id="todoCount" class="fs-5">0</div>
+					</div>
+					<div id="todo" data-role="status"></div>
+				</div>
+				<!-- In progress -->
+				<div class="col border border-warning-subtle border-2 rounded-2 text-dark p-4 bg-warning-subtle">
+					<div class="d-flex justify-content-between mb-3">
+						<h4>IN PROGRESS:</h4>
+						<div id="progressCount " class="fs-5">0</div>
+					</div>
+					<div id="progress" data-role="status"></div>
+				</div>
+				<!-- Done -->
+				<div class="col border border-success-subtle border-2 rounded-2 text-dark p-4 bg-success-subtle">
+					<div class="d-flex justify-content-between mb-3">
+						<h4>DONE:</h4>
+						<div id="doneCount" class="fs-5">0</div>
+					</div>
+					<div id="done" data-role="status"></div>
+				</div>
+			</div>
+			<div class="d-grid gap-2 d-md-flex justify-content-md-end position-fixed bottom-0 end-0 p-5">
+				<button class="btn btn-lg bg-danger-subtle border-danger-subtle me-md-2 fs-4 fw-semibold" type="button"
+					id="deleteAllBtn">Delete all
+					cards</button>
+				<button id="addCardBtn" class="btn btn-lg bg-success-subtle border-success-subtle fs-4 fw-semibold"
+					type="button">Add
+					cards</button>
+			</div>
+			<!-- Modal form -->
+			<div id="modalFormContainer" class="position-relative block" style="z-index: 20">
+				<!-- <div class="position-fixed top-50 start-50 translate-middle w-100 bg-dark bg-opacity-50">
+					<form id="todoForm" class="p-4 border rounded bg-light text-start fw-semibold w-50 position-relative">
+						<div class="mb-3">
+							<label for="title" class="form-label fs-5">Title</label>
+							<input type="text" class="form-control" id="title" placeholder="Enter todo...">
+						</div>
+						<div class="mb-3">
+							<label for="description" class="form-label fs-5">Description</label>
+							<textarea class="form-control p-2 rounded-3" id="description" rows="6"
+								placeholder="Write description"></textarea>
+						</div>
+						<div class="mb-3">
+							<label for="user" class="form-label fs-5">User </label>
+							<select id="user" class="form-select">
+								<option selected value="">Choose user</option>
+								<option value="Amelia">Amelia</option>
+								<option value="Mary">Mary</option>
+								<option value="Thomas">Thomas</option>
+								<option value="Harry">Harry</option>
+								<option value="Susan">Susan</option>
+							</select>
+						</div>
+						<button type="submit" class="btn btn-primary bg-secondary bg-gradient border-secondary">Add card
+							TODO</button>
+						<button type="button" class="btn-close position-absolute top-0 end-0 me-4 mt-4"
+							aria-label="close"></button>
+					</form>
+				</div> -->
+			</div>
+		</div>
+	</main>
+
+</body>
+
+</html>

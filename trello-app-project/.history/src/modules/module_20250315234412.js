@@ -1,0 +1,3 @@
+class Todo {
+	id = Datanow
+}

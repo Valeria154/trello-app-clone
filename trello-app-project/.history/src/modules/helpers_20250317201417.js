@@ -4,9 +4,10 @@ function showClock() {
 	clockElement.textContent = new Date().toLocaleTimeString()
 
 }
+
 setInterval(showClock, 1000)
 
-function closeModal(modal) {
+function toggleModal(modal) {
 	if (modal.classList.contains('hidden')) {
 		modal.classList.replace('hidden', 'block')
 	} else {
@@ -104,7 +105,7 @@ function countTodos(todos) {
 
 export {
 	showClock,
-	closeModal,
+	toggleModal,
 	buildModalForm,
 	buildTodoTemplate,
 	getData,

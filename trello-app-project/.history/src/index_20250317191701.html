@@ -25,9 +25,6 @@
 						<div id="todoCount" data-role="count" class="fs-5">0</div>
 					</div>
 					<div id="todo" data-role="status"></div>
-					<button id="addCardBtn" class="btn btn-lg bg-success-subtle border-success-subtle fs-4 fw-semibold"
-						type="button">Add
-						cards</button>
 				</div>
 				<!-- In progress -->
 				<div class="col border border-warning-subtle border-2 rounded-2 text-dark p-4 bg-warning-subtle">
@@ -44,10 +41,15 @@
 						<div id="doneCount" data-role="count" class="fs-5">0</div>
 					</div>
 					<div id="done" data-role="status"></div>
-					<button class="btn btn-lg bg-danger-subtle border-danger-subtle me-md-2 fs-4 fw-semibold" type="button"
-						id="deleteAllBtn">Delete all
-						cards</button>
 				</div>
+			</div>
+			<div class="d-grid gap-2 d-md-flex justify-content-md-end position-fixed bottom-0 end-0 p-5">
+				<button class="btn btn-lg bg-danger-subtle border-danger-subtle me-md-2 fs-4 fw-semibold" type="button"
+					id="deleteAllBtn">Delete all
+					cards</button>
+				<button id="addCardBtn" class="btn btn-lg bg-success-subtle border-success-subtle fs-4 fw-semibold"
+					type="button">Add
+					cards</button>
 			</div>
 			<!-- Modal form -->
 			<div id="modalFormContainer" class="position-relative hidden" style="z-index: 20">

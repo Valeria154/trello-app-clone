@@ -1,9 +1,17 @@
 import { clockElement, todoContainerElement, inProgressContainerElement, doneContainerElement, todos, todoCountElement, inProgressCountElement, doneCountElement } from './variables.js'
 
+//Часы
 function showClock() {
-	clockElement.textContent = new Date().toLocaleTimeString()
-	setInterval(showClock, 1000)
+	clockElement.textContent = new Date().toLocaleTimeString();
 }
+
+showClock(); // Вызов функции сразу после загрузки
+setInterval(showClock, 1000); // Обновление каждые 1000 мс
+
+// function showClock() {
+// 	clockElement.textContent = new Date().toLocaleTimeString()
+// 	setInterval(showClock, 1000)
+// }
 
 function toggleModal(modal) {
 	if (modal.classList.contains('hidden')) {

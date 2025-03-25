@@ -47,6 +47,7 @@ async function handleClickEditTodo({ target }) {
 	await buildModalForm(currentTodo)
 	closeModal(modalFormElement)
 
+	formElement.innerHTML = buildModalForm()
 	const titleInput = formElement.querySelector('[name="title"]')
 	const descriptionInput = formElement.querySelector('[name="description"]')
 	const userSelect = formElement.querySelector('[name="user"]')
@@ -56,26 +57,6 @@ async function handleClickEditTodo({ target }) {
 	userSelect.value = currentTodo.user
 
 	formElement.dataset.editedId = currentTodo.id
-}
-
-function handleChangeCardSelect(event) {
-	const selectedElement = event.target  // Находим карточку, в которой произошло изменение
-	const closestElement = selectedElement.closest('[data-id]') // Ищем родительский элемент карточки
-	const newStatus = selectedElement.value //  Получаем новой статус
-
-	if (!closestElement) return
-
-	const { id } = closestElement.dataset
-
-	if (closestElement) {
-		todos.forEach((todo) => {
-			if (todo.id == id) {
-				todo.status = newStatus
-			}
-		})
-		setData(todos)
-		render(todos)
-	}
 }
 
 function handleClickDeleteTodo({ target }) {
@@ -97,6 +78,5 @@ export {
 	handleClickCloseForm,
 	handleSubmitForm,
 	handleClickEditTodo,
-	handleChangeCardSelect,
 	handleClickDeleteTodo
 }

@@ -58,14 +58,25 @@ async function handleClickEditTodo({ target }) {
 	formElement.dataset.editedId = currentTodo.id
 }
 
-function handleChangeCardSelect(event) {
-	const selectedElement = event.target  // Находим карточку, в которой произошло изменение
+function handleCardChangeSelection(event) {
+	const selectedElement = event.target
 	const closestElement = selectedElement.closest('[data-id]') // Ищем родительский элемент карточки
 	const newStatus = selectedElement.value //  Получаем новой статус
 
 	if (!closestElement) return
 
 	const { id } = closestElement.dataset
+
+	// const progressCards = todos.filter((todo) => todo.status == 'progress').length
+	// // if tasks in progress are more than 3, it shows modal with alert to finish existing tasks
+	// if ((newStatus == 'progress') && progressCards >= 3) {
+	// 	closeModal(progressLimitModalElement)
+
+	// 	const currentTodo = todos.find(todo => todo.id == id)
+	// 	target.value = currentTodo.status
+
+	// 	return
+	// }
 
 	if (closestElement) {
 		todos.forEach((todo) => {
@@ -97,6 +108,5 @@ export {
 	handleClickCloseForm,
 	handleSubmitForm,
 	handleClickEditTodo,
-	handleChangeCardSelect,
 	handleClickDeleteTodo
 }

@@ -6,8 +6,7 @@ import {
 	todos,
 	todoCountElement,
 	inProgressCountElement,
-	doneCountElement,
-	formElement
+	doneCountElement
 } from './variables.js'
 
 function showClock() {
@@ -24,8 +23,8 @@ function closeModal(modal) {
 	}
 }
 
-async function buildModalForm() {
-	formElement.innerHTML = `
+function buildModalForm() {
+	return `
 				<div class="mb-3">
 					<label for="title" class="form-label fs-5">Title</label>
 					<input type="text" class="form-control" id="title" name="title" placeholder="Enter todo..." required>
@@ -43,9 +42,9 @@ async function buildModalForm() {
 				</div>
 				<button type="submit" class="btn btn-primary bg-secondary bg-gradient border-secondary">Add card
 					TODO</button>
-				<button type="button" data-role="btn-close" class="btn-close position-absolute top-0 end-0 me-4 mt-4" aria-label="close"></button>
+				<button type="button" class="btn-close position-absolute top-0 end-0 me-4 mt-4"
+					aria-label="close"></button>
 	`
-	await getUsers()
 }
 
 function buildTodoTemplate({ id, title, description, user, status, createdAt }) {
@@ -99,17 +98,18 @@ function render(todos = []) {
 }
 
 function countTodos(todos) {
-	const todoCountArray = todos.filter(todo => todo.status == 'todo')
-	todoCountElement.textContent = todoCountArray.length
-	const inProgressArray = todos.filter(todo => todo.status == 'progress')
-	inProgressCountElement.textContent = inProgressArray.length
-	const doneCountArray = todos.filter(todo => todo.status == 'done')
-	doneCountElement.textContent = doneCountArray.length
+	const todoCountArr = todos.filter(todo => todo.status == 'todo')
+	todoCountElement.textContent = todoCountArr.length
+	const inProgressArr = todos.filter(todo => todo.status == 'progress')
+	inProgressCountElement.textContent = inProgressArr.length
+	const doneCountArr = todos.filter(todo => todo.status == 'done')
+	doneCountElement.textContent = doneCountArr.length
 }
 
+//загрузка пользователей с сервера
 async function getUsers() {
 	try {
-		const response = await fetch('https://jsonplaceholder.typicode.com/users/?_limit=6')
+		const response = await fetch('https://jsonplaceholder.typicode.com/users')
 		const users = await response.json()
 		const selectUsers = document.querySelector('#user')
 		users.forEach((user) => {
@@ -118,7 +118,6 @@ async function getUsers() {
 			optionUser.textContent = user.username
 			selectUsers.append(optionUser)
 		})
-
 	} catch (error) {
 		alert('Проверь свои действия')
 	}

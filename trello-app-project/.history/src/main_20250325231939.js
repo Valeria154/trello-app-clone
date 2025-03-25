@@ -17,3 +17,5 @@ containerTodoElement.addEventListener('click', handleClickCloseForm)
 containerTodoElement.addEventListener('click', handleClickEditTodo)
 containerTodoElement.addEventListener('change', handleChangeCardSelect)
 containerTodoElement.addEventListener('click', handleClickDeleteTodo)
+
+render()

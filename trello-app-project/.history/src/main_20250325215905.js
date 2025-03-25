@@ -5,7 +5,6 @@ import {
 	handleClickCloseForm,
 	handleSubmitForm,
 	handleClickEditTodo,
-	handleChangeCardSelect,
 	handleClickDeleteTodo
 }
 	from './modules/handlers.js'
@@ -15,5 +14,4 @@ addCardBtnElement.addEventListener('click', handleClickButtonAddCard)
 containerTodoElement.addEventListener('submit', handleSubmitForm)
 containerTodoElement.addEventListener('click', handleClickCloseForm)
 containerTodoElement.addEventListener('click', handleClickEditTodo)
-containerTodoElement.addEventListener('change', handleChangeCardSelect)
 containerTodoElement.addEventListener('click', handleClickDeleteTodo)

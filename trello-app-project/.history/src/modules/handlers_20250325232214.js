@@ -59,7 +59,7 @@ async function handleClickEditTodo({ target }) {
 }
 
 function handleChangeCardSelect(event) {
-	const selectedElement = event.target  // Находим карточку, в которой произошло изменение
+	const selectedElement = event.target
 	const closestElement = selectedElement.closest('[data-id]') // Ищем родительский элемент карточки
 	const newStatus = selectedElement.value //  Получаем новой статус
 

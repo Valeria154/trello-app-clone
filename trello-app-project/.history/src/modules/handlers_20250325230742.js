@@ -58,14 +58,24 @@ async function handleClickEditTodo({ target }) {
 	formElement.dataset.editedId = currentTodo.id
 }
 
-function handleChangeCardSelect(event) {
-	const selectedElement = event.target  // Находим карточку, в которой произошло изменение
-	const closestElement = selectedElement.closest('[data-id]') // Ищем родительский элемент карточки
-	const newStatus = selectedElement.value //  Получаем новой статус
+function handleCardChangeSelection(event) {
+	const newStatus = target.value
+	const closestElement = target.closest('[data-id]')
 
 	if (!closestElement) return
 
 	const { id } = closestElement.dataset
+
+	const progressCards = todos.filter((todo) => todo.status == 'progress').length
+	// if tasks in progress are more than 3, it shows modal with alert to finish existing tasks
+	if ((newStatus == 'progress') && progressCards >= 3) {
+		toggleModal(progressLimitModalElement)
+
+		const currentTodo = todos.find(todo => todo.id == id)
+		target.value = currentTodo.status
+
+		return
+	}
 
 	if (closestElement) {
 		todos.forEach((todo) => {
@@ -73,7 +83,7 @@ function handleChangeCardSelect(event) {
 				todo.status = newStatus
 			}
 		})
-		setData(todos)
+		setDataToStorage(todos)
 		render(todos)
 	}
 }
@@ -97,6 +107,5 @@ export {
 	handleClickCloseForm,
 	handleSubmitForm,
 	handleClickEditTodo,
-	handleChangeCardSelect,
 	handleClickDeleteTodo
 }

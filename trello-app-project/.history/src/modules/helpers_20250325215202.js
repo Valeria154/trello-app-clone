@@ -99,12 +99,12 @@ function render(todos = []) {
 }
 
 function countTodos(todos) {
-	const todoCountArray = todos.filter(todo => todo.status == 'todo')
-	todoCountElement.textContent = todoCountArray.length
-	const inProgressArray = todos.filter(todo => todo.status == 'progress')
-	inProgressCountElement.textContent = inProgressArray.length
-	const doneCountArray = todos.filter(todo => todo.status == 'done')
-	doneCountElement.textContent = doneCountArray.length
+	const todoCountArr = todos.filter(todo => todo.status == 'todo')
+	todoCountElement.textContent = todoCountArr.length
+	const inProgressArr = todos.filter(todo => todo.status == 'progress')
+	inProgressCountElement.textContent = inProgressArr.length
+	const doneCountArr = todos.filter(todo => todo.status == 'done')
+	doneCountElement.textContent = doneCountArr.length
 }
 
 async function getUsers() {

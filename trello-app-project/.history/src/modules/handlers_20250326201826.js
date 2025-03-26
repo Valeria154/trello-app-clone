@@ -8,10 +8,8 @@ function handleClickButtonAddCard() {
 	closeModal(modalFormElement)
 }
 
-function handleClickCloseForm({ target }) {
-	if (target == modalFormElement || target.dataset.role == 'btn-close') {
-		closeModal(modalFormElement)
-	}
+function handleClickCloseForm() {
+
 }
 
 function handleSubmitForm(event) {

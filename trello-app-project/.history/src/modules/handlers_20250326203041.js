@@ -9,8 +9,9 @@ function handleClickButtonAddCard() {
 }
 
 function handleClickCloseForm({ target }) {
-	if (target == modalFormElement || target.dataset.role == 'btn-close') {
-		closeModal(modalFormElement)
+	const currentModalForm = target.closest('#modalFormContainer')
+	if () {
+		closeModal(currentModalForm)
 	}
 }
 

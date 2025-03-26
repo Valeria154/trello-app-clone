@@ -9,8 +9,12 @@ function handleClickButtonAddCard() {
 }
 
 function handleClickCloseForm({ target }) {
-	if (target == modalFormElement || target.dataset.role == 'btn-close') {
-		closeModal(modalFormElement)
+	const currentModalElement = target.closest('.modalFormContainer')
+	if (target === currentModalElement || target.dataset.role == 'btn-close') {
+		closeModal()
+		if (currentModalElement.contains(formElement)) {
+			formElement.reset()
+		}
 	}
 }
 
